@@ -1,3 +1,5 @@
+import { registerImage } from './lazy.js'
+
 const urlApi = 'https://randomfox.ca/floof/'
 const app = document.querySelector('#app')
 const btn = document.querySelector('#button')
@@ -16,10 +18,11 @@ const createImageNode = async () => {
   const img = document.createElement('img')
   img.className = 'img'
   img.alt = 'Fox image'
-  img.src = await fetchDataLink(urlApi)
+  img.dataset.src = await fetchDataLink(urlApi)
 
   container.appendChild(img)
   app.appendChild(container)
+  registerImage(container)
 }
 
 btn.addEventListener('click', createImageNode)
