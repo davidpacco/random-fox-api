@@ -2,7 +2,8 @@ import { registerImage } from './lazy.js'
 
 const urlApi = 'https://randomfox.ca/floof/'
 const app = document.querySelector('#app')
-const btn = document.querySelector('#button')
+const addBtn = document.querySelector('#add-button')
+const removeBtn = document.querySelector('#remove-button')
 
 const fetchDataLink = async (url) => {
   let response = await fetch(url)
@@ -14,6 +15,7 @@ const fetchDataLink = async (url) => {
 const createImageNode = async () => {
   const container = document.createElement('div')
   container.className = 'container'
+  app.appendChild(container)
 
   const img = document.createElement('img')
   img.className = 'img'
@@ -21,8 +23,16 @@ const createImageNode = async () => {
   img.dataset.src = await fetchDataLink(urlApi)
 
   container.appendChild(img)
-  app.appendChild(container)
   registerImage(container)
 }
 
-btn.addEventListener('click', createImageNode)
+const clearImages = () => {
+  [...app.childNodes].forEach(child => {
+    if (child.nodeName === 'DIV') {
+      child.remove()
+    }
+  });
+}
+
+addBtn.addEventListener('click', createImageNode)
+removeBtn.addEventListener('click', clearImages)

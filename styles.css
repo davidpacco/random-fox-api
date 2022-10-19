@@ -38,29 +38,48 @@ body {
   gap: 16px;
 }
 
-#button {
+#add-button,
+#remove-button {
   height: 40px;
   width: 120px;
   align-self: center;
   margin-bottom: 24px;
-  border: 1px solid transparent;
+  border: none;
   border-radius: 8px;
   box-shadow: 0px 2px 2px gray;
-  background: #6315df;
   color: white;
   font-weight: bold;
   transition: .2s;
   position: fixed;
-  bottom: 24px;
 }
 
-#button:hover {
+#add-button {
+  background: #6315df;
+  bottom: 52px;
+}
+
+#remove-button {
+  bottom: 4px;
+  background: white;
+  color: #6315df;
+}
+
+#add-button:hover,
+#remove-button:hover {
   transform: scale(1.05);
 }
 
-#button:active {
-  background-color: #440f99;
+#add-button:active,
+#remove-button:active {
   transform: scale(1);
+}
+
+#add-button:active {
+  background-color: #440f99;
+}
+
+#remove-button:active {
+  background-color: #efefef;
 }
 
 .container {
